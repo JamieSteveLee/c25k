@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+		<script src="https://use.fontawesome.com/d5895a3b55.js"></script>
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
+
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+		<link rel="stylesheet" href="styles.min.css" type="text/css" />
+
+		<title>C25K</title>
+	</head>
+	<body>
+		<div id="app">
+			<header>
+				C25K
+				<i v-if="!settingsOpen" @click="toggleSettings" class="fa fa-bars"></i>
+				<i v-else @click="toggleSettings" class="fa fa-times"></i>
+			</header>
+			<main>
+				<template v-if="settingsOpen">
+					<div>
+						Start Date: <input type="date" v-model="fullPlan[0].date">
+					</div>
+					<div>
+						Edit Dates: <input type="checkbox" v-model="editDates">
+					</div>
+					<hr>
+					<div>
+						Show dates: <input type="checkbox" v-model="settings.showDates">
+					</div>
+					<div>
+						Include warmup and cooldown walks: <input type="checkbox" v-model="settings.showWarmupCooldown">
+					</div>
+
+				</template>
+				<template v-else>
+					<div v-for="(day, index) in fullPlan" class="run-row">
+						<span class="run-date" v-if="fullPlan[0].date && settings.showDates">
+							<input v-if="editDates" type="date" v-model="day.date">
+							<template v-else>
+								{{ formatDate(computedDates[index]) }}
+							</template>
+						</span>
+						<span>Week {{ day.week }} Run {{ day.run }}</span>
+					</div>
+				</template>
+			</main>
+		</div>
+		<script type="text/javascript" src="scripts.min.js"></script>
+	</body>
+</html>

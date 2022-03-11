@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+// $fa-font-path: "assets/webfonts";
+// @import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+// @import "../../node_modules/@fortawesome/fontawesome-free/scss/brands";
+// // @import "../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+// @import "../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+// // @import "../../node_modules/@fortawesome/fontawesome-free/scss/v4-shims";
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+html {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+}
+
+header {
+	background-color: blue;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 1.3rem;
+	padding: 6px 8px;
+
+	i {
+		cursor: pointer;
+	}
+}
+
+main {
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
+
+	.run-row {
+		display: flex;
+		align-items: center;
+
+		&:not(:last-child) {
+			border-bottom: 1px solid #ddd;
+		}
+
+		> span {
+			padding: 0 8px;
+		}
+
+		.run-date {
+			font-size: 0.8rem;
+
+			input {
+				border: none;
+				font-size: 0.8rem;
+			}
+		}
+	}
+}
