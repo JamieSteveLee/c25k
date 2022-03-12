@@ -36,17 +36,25 @@
 					<div>
 						Include warmup and cooldown walks: <input type="checkbox" v-model="settings.showWarmupCooldown">
 					</div>
-
 				</template>
 				<template v-else>
-					<div v-for="(day, index) in fullPlan" class="run-row">
-						<span class="run-date" v-if="fullPlan[0].date && settings.showDates">
-							<input v-if="editDates" type="date" v-model="day.date">
-							<template v-else>
-								{{ formatDate(computedDates[index]) }}
-							</template>
-						</span>
-						<span>Week {{ day.week }} Run {{ day.run }}</span>
+					<div v-for="(day, index) in fullPlan" :class="{'run-done' : day.done}" class="run-row">
+						<div class="run-details">
+							<span v-if="fullPlan[0].date && settings.showDates" :class="{'edited-date' : fullPlan[index].date}" class="run-date">
+								<input v-if="editDates" type="date" v-model="day.date">
+								<template v-else>
+									{{ formatDate(computedDates[index]) }}
+								</template>
+							</span>
+
+							<span>Week {{ day.week }} Run {{ day.run }}</span>
+						</div>
+
+						<div class="progress">
+							
+						</div>
+
+						<input type="checkbox" v-model="day.done">
 					</div>
 				</template>
 			</main>

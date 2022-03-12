@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
-// $fa-font-path: "assets/webfonts";
-// @import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
-// @import "../../node_modules/@fortawesome/fontawesome-free/scss/brands";
-// // @import "../../node_modules/@fortawesome/fontawesome-free/scss/regular";
-// @import "../../node_modules/@fortawesome/fontawesome-free/scss/solid";
-// // @import "../../node_modules/@fortawesome/fontawesome-free/scss/v4-shims";
-
 *, *:before, *:after {
 	box-sizing: inherit;
 }
@@ -40,22 +33,53 @@ main {
 	.run-row {
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
+		padding: 0 5px;
+
+		&.run-done {
+			background-color: #c7e7c7;
+			border-color: #bbddbb !important;
+		}
 
 		&:not(:last-child) {
 			border-bottom: 1px solid #ddd;
-		}
 
-		> span {
-			padding: 0 8px;
-		}
-
-		.run-date {
-			font-size: 0.8rem;
-
-			input {
-				border: none;
-				font-size: 0.8rem;
+			&:nth-child(3n) {
+				border-width: 2px;
 			}
+		}
+
+		.run-details {
+			padding: 2px 0px;
+			display: flex;
+			align-items: center;
+
+			> span {
+				padding: 0 5px;
+			}
+
+			.run-date {
+				font-size: 0.8rem;
+				color: #777;
+
+				&.edited-date {
+					color: #000;
+				}
+
+				input {
+					border: none;
+					font-size: 0.8rem;
+				}
+			}
+		}
+
+		.progress {
+			flex: 1;
+		}
+
+		input {
+			margin-left: 8px;
+			margin-right: 8px;
 		}
 	}
 }
